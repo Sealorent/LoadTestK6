@@ -29,24 +29,25 @@ class Scenario {
 
         const response = http.post(url, payload, { headers });
 
-        this.token = JSON.parse(response.body).message.token;
-
+        let res = JSON.parse(response.body);
+        this.token = res.message.token;
 
         check(response, { 'status is 200': (r) => r.status === 200 });
+      
+        return this.token;
 
     }
 
-    courseBranch() {
+    courseBranch(res) {
 
         const url = `${urlApi.courseOffline}`;
 
-        const headers = { 'Authorization': `Bearer ${this.token}` };
-        
+        const headers = { 'Authorization': res };
+
         const response = http.get(url, { headers });
 
         check(response, { 'status is 200': (r) => r.status === 200 });
 
-        
     }
 }
 

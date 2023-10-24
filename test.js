@@ -2,7 +2,8 @@ import Scenario  from './scenario.js';
 
 export default function () {
   
-  Scenario.login();
-  Scenario.courseBranch();
+  var res =  Scenario.login();
+  
+  Scenario.courseBranch(res);
 
 }
