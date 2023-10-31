@@ -1,27 +1,16 @@
+
 import Actions  from './actions.js';
 
-// export const options = {
-//   scenarios: {
-//     contacts: {
-//       executor: 'ramping-arrival-rate',
-//       timeUnit: '1s',
-//       preAllocatedVUs: 10,
-//       maxVUs: 200,
-//       stages: [
-//         { target: 5, duration: '0s' },
-//         { target: 5, duration: '2s' },
-//         { target: 15, duration: '0s' },
-//         { target: 15, duration: '10s' },
-//       ],
-//     },
-//   },
-//   thresholds: {
-//     http_req_duration: ['p(95)<60000'], //units in miliseconds 60000ms = 1m 
-//     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-//     checks: ["rate>0.99"]
-//   },
-// };
-
+export const options = {
+  stages: [
+    { duration: '5m', target: 80 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '10m', target: 100 }, // stay at 100 users for 30 minutes
+    { duration: '5m', target: 20 },
+  ],
+  thresholds: {
+    http_req_duration: ["p(99)<100"],
+  },
+};
 
 export default function () {
   
@@ -29,9 +18,9 @@ export default function () {
 
   Actions.dashboard(token);
 
-  var uid_category = Actions.learningVideoCategory(token);
+  var uid_category = Actions.learningVideoMaster(token);
 
-  var uid = Actions.learningVideoDetail(token, uid_category);
+  var uid = Actions.learningVideoCategory(token, uid_category);
 
   Actions.learningVideoDetail(token, uid);
 

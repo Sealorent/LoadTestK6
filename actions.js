@@ -51,11 +51,12 @@ class Scenario {
 
         const response = http.get(url, { headers });
 
+        let res = JSON.parse(response.body);
+        let uid = res.message[0].uid;
+
         check(response, { 'status is 200': (r) => r.status === 200 });
         
-        let result = JSON.parse(response.body);
-
-        return result.message[0].uid;
+        return uid;
 
     }
 
@@ -67,11 +68,12 @@ class Scenario {
 
         const response = http.get(url, { headers });
 
+        let res = JSON.parse(response.body);
+        let uid = res.message.data[0].uid;
+
         check(response, { 'status is 200': (r) => r.status === 200 });
 
-        let res = JSON.parse(response.body);
-
-        return res.message[0].uid;
+        return uid;
 
     }
 
