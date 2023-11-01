@@ -4,7 +4,7 @@ import { baseUrlLogin, baseUrl } from './const.js';
 import urlApi from './url.js';
 
 
-class Scenario {
+class Actions {
 
     login() {
         const url = `${baseUrlLogin}`;
@@ -159,7 +159,7 @@ class Scenario {
     }
 }
 
-export default new Scenario();
+export default new Actions();
 
 
 

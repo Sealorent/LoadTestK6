@@ -1,5 +1,5 @@
 
-import Actions  from './actions.js';
+import Actions from './actions.js';
 
 export const options = {
   stages: [
