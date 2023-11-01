@@ -3,9 +3,9 @@ import Actions  from './actions.js';
 
 export const options = {
   stages: [
-    { duration: '5m', target: 80 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
-    { duration: '10m', target: 100 }, // stay at 100 users for 30 minutes
-    { duration: '5m', target: 20 },
+    { duration: '1m', target: 80 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '3m', target: 100 }, // stay at 100 users for 30 minutes
+    { duration: '1m', target: 20 },
   ],
   thresholds: {
     http_req_duration: ["p(99)<100"],
