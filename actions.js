@@ -157,6 +157,33 @@ class Actions {
         check(response, { 'status is 200': (r) => r.status === 200 });
 
     }
+
+    notificationList(token) {
+
+        const url = `${baseUrl}/notification/member/list`;
+
+        const headers = { 'Authorization': token };
+
+        const response = http.get(url, { headers });
+
+        let res = JSON.parse(response.body);
+        let uid = res.message[0].uid;
+
+        check(response, { 'status is 200': (r) => r.status === 200 });
+
+        return uid;
+    }
+
+    promotionDetails(token, uid) {
+
+        const url = `${baseUrl}/promotion/details?uid=${uid}`;
+
+        const headers = { 'Authorization': token };
+
+        const response = http.get(url, { headers });
+
+        check(response, { 'status is 200': (r) => r.status === 200 });
+    }
 }
 
 export default new Actions();
