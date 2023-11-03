@@ -184,6 +184,17 @@ class Actions {
 
         check(response, { 'status is 200': (r) => r.status === 200 });
     }
+
+    getProfile(token){
+
+        const url = `${baseUrl}/users`;
+
+        const headers = { 'Authorization': token };
+
+        const response = http.get(url, { headers });
+
+        check(response, { 'status is 200': (r) => r.status === 200 });
+    }
 }
 
 export default new Actions();

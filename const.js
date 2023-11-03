@@ -14,7 +14,7 @@ const dapurUrl = 'https://api-member.kampunginggris.id/api';
 const newServer = 'https://member-gateway.kampunginggrislc.com/api';
 const newUrl = 'https://member-test.kampunginggris.id/api';
 
-const url = dapurUrl;
+const url = newUrl;
 
 export const baseUrlLogin = url + '/guest/sign-in';
 export const baseUrl = url + '/lc';

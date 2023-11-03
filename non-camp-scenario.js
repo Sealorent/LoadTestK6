@@ -15,29 +15,35 @@ import Actions from './actions.js';
 //   },
 // };
 
+export const options = {
+  vus: 3, // Key for Smoke test. Keep it at 2, 3, max 5 VUs
+  duration: '1m', // This can be shorter or just a few iterations
+};
+
 export default function () {
   
   var token =  Actions.login();
 
-  Actions.dashboard(token);
+  Actions.getProfile(token);
+  // Actions.dashboard(token);
 
-  var uid_category = Actions.learningVideoMaster(token);
+  // var uid_category = Actions.learningVideoMaster(token);
 
-  var uid = Actions.learningVideoCategory(token, uid_category);
+  // var uid = Actions.learningVideoCategory(token, uid_category);
 
-  Actions.learningVideoDetail(token, uid);
+  // Actions.learningVideoDetail(token, uid);
 
-  Actions.classInfo(token);
+  // Actions.classInfo(token);
 
-  Actions.classCurrent(token);
+  // Actions.classCurrent(token);
 
-  Actions.placementTest(token);
+  // Actions.placementTest(token);
 
-  Actions.academicReport(token);
+  // Actions.academicReport(token);
 
-  var uid = Actions.notificationList(token);
+  // var uid = Actions.notificationList(token);
 
-  Actions.promotionDetails(token, uid);
+  // Actions.promotionDetails(token, uid);
 
   sleep(1);
   
