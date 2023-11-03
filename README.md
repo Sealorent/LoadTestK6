@@ -6,6 +6,7 @@
 k6 run test.js \
 --out json=test.json \
 --out influxdb=http://load-test-db.cap.lcpare.com:8086/k6 
+--out influxdb=https://influx-prod-db.kampunginggrislc.com
 
 
 ### Explanation
