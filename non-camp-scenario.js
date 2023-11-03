@@ -3,8 +3,12 @@ import { sleep } from 'k6';
 import Actions from './actions.js';
 
 export const options = {
-  vus: 3, // Key for Smoke test. Keep it at 2, 3, max 5 VUs
-  duration: '1m', // This can be shorter or just a few iterations
+  // Key configurations for avg load test in this section
+  stages: [
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '30m', target: 100 }, // stay at 100 users for 30 minutes
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
+  ],
 };
 
 export default function () {
