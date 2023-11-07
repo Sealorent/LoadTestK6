@@ -10,7 +10,7 @@ export const options = {
   thresholds: {
     http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ['p(95)<200'], // 95% of requests should be below 200ms
-    http_reqs: ['count>10'], // throughput should be at least 100 request per second
+    http_reqs: ['count>100'], // throughput should be at least 100 request per second
     // cpu: ['avg<80'], // CPU should be less than 80%
     // memory: ['avg<50'], // Memory should be less than 80%
   },
