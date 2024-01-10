@@ -43,3 +43,33 @@ scenarios: Objek yang mendefinisikan skenario yang akan dijalankan oleh load tes
 options: Objek yang mendefinisikan opsi global untuk load test.
 default function: Fungsi yang akan dieksekusi oleh semua VUs.
 Saya harap penjelasan ini bermanfaat. Silakan beri tahu saya jika Anda memiliki pertanyaan lain.
+
+# EXAMPLE SCRIPT
+    import http from 'k6/http';
+    import { check, sleep } from 'k6';
+
+    export const options = {
+    stages: [
+        { duration: '30s', target: 20 },
+        { duration: '1m30s', target: 10 },
+        { duration: '20s', target: 0 },
+    ],
+    };
+
+    export default function () {
+    const res = http.get('https://httpbin.test.k6.io/');
+    check(res, { 'status was 200': (r) => r.status == 200 });
+    sleep(1);
+    }
+
+# RUN
+  - k6 run script.js
+  - k6 run --vus 10 --duration 30s script.js
+
+
+# RUN WITH OUTPUT
+  # INFLUXDB
+  k6 run \
+    --out influxdb=http://influx-db.cap.lcpare.com/db
+
+
